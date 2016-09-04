@@ -1,6 +1,7 @@
 'use strict';
 // Build Express Routes (CRUD routes for /articles)
 const logger = require('winston');
+const _ = require('lodash');
 
 module.exports = function setupArticleRoutes(app) {
     logger.debug('Setting up article routes');
@@ -12,7 +13,10 @@ module.exports = function setupArticleRoutes(app) {
                     err: err
                 }, 500);
             }
-            res.json(models);
+            //res.json(models);
+            res.json(_.map(models, (article) => {
+                return _.omit(article, ['body']);
+            }));
         });
     });
 
@@ -34,7 +38,8 @@ module.exports = function setupArticleRoutes(app) {
             if (err) return res.json({
                 err: err
             }, 500);
-            res.json(model);
+            //res.json(model);
+            res.json(_.omit(model, ['summary']));
         });
     });
 

@@ -12,6 +12,14 @@ const Article = Waterline.Collection.extend({
         likesCount: 'number',
         author: 'object',
         publishedAt: 'date'
+    },
+
+    // Lifecycle Callbacks
+    beforeCreate: function(values, next) {
+        if (!values.summary) {
+            values.summary = values.body.slice(0, 150) + '...';
+        }
+        next();
     }
 });
 

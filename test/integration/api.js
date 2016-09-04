@@ -12,7 +12,7 @@ logger.level = 'silly';
 let articleData = [{
     "id": 1,
     "title": "White Veggies to Add to Your Meal",
-    "summary": "Laboriosam dignissimos est quis sint. Voluptate dolore nostrum similique nulla iure error ex. Aliquid eum alias neque pariatur sit quae amet ut nemo. Esse quam aut dolores aut unde unde praesentium voluptas.",
+    "body": "Laboriosam dignissimos est quis sint. Voluptate dolore nostrum similique nulla iure error ex. Aliquid eum alias neque pariatur sit quae amet ut nemo. Esse quam aut dolores aut unde unde praesentium voluptas.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/1.jpg",
     "published_at": "2016-07-27T04:41:58.933Z",
     "likes_count": 42,
@@ -23,7 +23,7 @@ let articleData = [{
 }, {
     "id": 2,
     "title": "Zika Virus Potentially Transmitted in Florida",
-    "summary": "Non dolores illo occaecati ratione quia qui. Non aliquid modi nemo aut ducimus. Tempore reiciendis beatae. Ullam vitae aut dolor voluptatem fugit sit autem necessitatibus ad.",
+    "body": "Non dolores illo occaecati ratione quia qui. Non aliquid modi nemo aut ducimus. Tempore reiciendis beatae. Ullam vitae aut dolor voluptatem fugit sit autem necessitatibus ad.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/2.jpg",
     "published_at": "2016-07-26T03:40:20.505Z",
     "likes_count": 38,
@@ -34,7 +34,7 @@ let articleData = [{
 }, {
     "id": 3,
     "title": "Protecting Yourself From Dangerous Temperatures",
-    "summary": "Dignissimos eveniet distinctio magni. Aut magni nihil expedita voluptas. Iste sit in dolores vel fuga. Pariatur id veritatis dolore.",
+    "body": "Dignissimos eveniet distinctio magni. Aut magni nihil expedita voluptas. Iste sit in dolores vel fuga. Pariatur id veritatis dolore.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/3.jpg",
     "published_at": "2016-07-24T01:09:10.123Z",
     "likes_count": 90,
@@ -45,7 +45,7 @@ let articleData = [{
 }, {
     "id": 4,
     "title": "Sitting is the New Smoking",
-    "summary": "Enim molestias illum rerum blanditiis. Dolor dolor omnis nemo ducimus omnis animi quam. Voluptates nesciunt laudantium soluta blanditiis et. Aut aperiam in id est dolor facere eaque.",
+    "body": "Enim molestias illum rerum blanditiis. Dolor dolor omnis nemo ducimus omnis animi quam. Voluptates nesciunt laudantium soluta blanditiis et. Aut aperiam in id est dolor facere eaque.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/4.jpg",
     "published_at": "2016-07-23T04:48:00.978Z",
     "likes_count": 25,
@@ -56,7 +56,7 @@ let articleData = [{
 }, {
     "id": 5,
     "title": "Job Stress Might Be Making You Sick",
-    "summary": "Debitis voluptatem consequuntur ullam molestias voluptatem. Cupiditate quia et quia qui vitae. In facilis consequuntur dolores quos consectetur ratione cupiditate et ab.",
+    "body": "Debitis voluptatem consequuntur ullam molestias voluptatem. Cupiditate quia et quia qui vitae. In facilis consequuntur dolores quos consectetur ratione cupiditate et ab.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/5.jpg",
     "published_at": "2016-07-22T08:59:45.460Z",
     "likes_count": 7,
@@ -67,7 +67,7 @@ let articleData = [{
 }, {
     "id": 6,
     "title": "Healing Effects of Yoga",
-    "summary": "Maiores suscipit ab inventore optio ad aliquam ducimus eos perspiciatis. Odit aut enim. Vel suscipit quo ipsam ad ducimus consequatur. Dolor omnis omnis sit ea tempore et ea.",
+    "body": "Maiores suscipit ab inventore optio ad aliquam ducimus eos perspiciatis. Odit aut enim. Vel suscipit quo ipsam ad ducimus consequatur. Dolor omnis omnis sit ea tempore et ea.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/6.jpg",
     "published_at": "2016-07-20T01:12:30.172Z",
     "likes_count": 14,
@@ -78,7 +78,7 @@ let articleData = [{
 }, {
     "id": 7,
     "title": "Is TV Binging Hazardous to Your Health?",
-    "summary": "Eius et perferendis. Voluptate blanditiis est. Non blanditiis fugit assumenda eum commodi. Earum labore nisi hic eos. Rerum quia laborum quasi. Ipsum qui quod.",
+    "body": "Eius et perferendis. Voluptate blanditiis est. Non blanditiis fugit assumenda eum commodi. Earum labore nisi hic eos. Rerum quia laborum quasi. Ipsum qui quod.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/7.jpg",
     "published_at": "2016-07-19T02:58:10.892Z",
     "likes_count": 4,
@@ -89,7 +89,7 @@ let articleData = [{
 }, {
     "id": 8,
     "title": "Studies Show Gut Bacteria Linked to Fatigue",
-    "summary": "Quae natus aliquid nesciunt aperiam veniam non molestiae repudiandae qui. Est saepe doloribus eos. Libero nulla voluptas voluptatibus sequi et laboriosam dolores enim veniam.",
+    "body": "Quae natus aliquid nesciunt aperiam veniam non molestiae repudiandae qui. Est saepe doloribus eos. Libero nulla voluptas voluptatibus sequi et laboriosam dolores enim veniam.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/8.jpg",
     "published_at": "2016-07-17T03:12:56.203Z",
     "likes_count": 0,
@@ -100,7 +100,7 @@ let articleData = [{
 }, {
     "id": 9,
     "title": "Detecting Early-Onset Alzheimerâ€™s Disease",
-    "summary": "Hic quia iusto facilis quidem et soluta. Repudiandae dolores et omnis nulla. Corporis non earum laborum consequatur. Consequatur rem cupiditate totam enim.",
+    "body": "Hic quia iusto facilis quidem et soluta. Repudiandae dolores et omnis nulla. Corporis non earum laborum consequatur. Consequatur rem cupiditate totam enim.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/9.jpg",
     "published_at": "2016-07-17T05:02:44.615Z",
     "likes_count": 31,
@@ -111,7 +111,7 @@ let articleData = [{
 }, {
     "id": 10,
     "title": "Diet & Nutrition Tips: Fact vs. Fad",
-    "summary": "In est et odio in minima unde consequatur nam aut. Quam sed sed perferendis aliquam sed. Voluptatem nulla non qui reprehenderit. Similique rem laudantium quo delectus id odio. Vel rem reiciendis nemo ipsam sint.",
+    "body": "In est et odio in minima unde consequatur nam aut. Quam sed sed perferendis aliquam sed. Voluptatem nulla non qui reprehenderit. Similique rem laudantium quo delectus id odio. Vel rem reiciendis nemo ipsam sint.",
     "media_url": "https://medcircle-coding-project.s3.amazonaws.com/api/articles/10.jpg",
     "published_at": "2016-07-15T01:54:37.752Z",
     "likes_count": 17,
