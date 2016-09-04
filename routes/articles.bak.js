@@ -1,3 +1,4 @@
+'use strict';
 const logger = require('winston');
 const _ = require('lodash');
 

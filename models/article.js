@@ -1,3 +1,4 @@
+'use strict';
 const Waterline = require('waterline');
 
 const Article = Waterline.Collection.extend({

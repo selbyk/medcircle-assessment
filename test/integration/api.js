@@ -1,3 +1,4 @@
+/* globals describe: false, it: false, beforeEach: false, afterEach: false */
 'use strict';
 const fs = require('fs');
 const logger = require('winston');
@@ -6,9 +7,7 @@ const _ = require('lodash');
 
 process.env.PORT = 3434;
 process.env.NODE_ENV = 'testing';
-process.env.LOG_LEVEL = 'debug';
-
-logger.level = 'silly';
+process.env.LOG_LEVEL = 'error';
 
 function isArray(res) {
     if (!_.isArray(res.body)) {
@@ -26,12 +25,12 @@ function hasSummaryAttr(res) {
     if (_.isArray(res.body)) {
         for (let article of res.body) {
             if (!('summary' in article)) {
-                throw new Error("missing summary");
+                throw new Error('missing summary');
             }
         }
     } else {
         if (!('summary' in res.body)) {
-            throw new Error("missing summary");
+            throw new Error('missing summary');
         }
     }
 }
@@ -40,12 +39,12 @@ function doesNotHaveSummary(res) {
     if (_.isArray(res.body)) {
         for (let article of res.body) {
             if (('summary' in article)) {
-                throw new Error("summary present");
+                throw new Error('summary present');
             }
         }
     } else {
         if (('summary' in res.body)) {
-            throw new Error("summary present");
+            throw new Error('summary present');
         }
     }
 }
@@ -54,12 +53,12 @@ function hasBodyAttr(res) {
     if (_.isArray(res.body)) {
         for (let article of res.body) {
             if (!('body' in article)) {
-                throw new Error("missing body");
+                throw new Error('missing body');
             }
         }
     } else {
         if (!('body' in res.body)) {
-            throw new Error("missing body");
+            throw new Error('missing body');
         }
     }
 }
@@ -68,12 +67,12 @@ function doesNotHaveBodyAttr(res) {
     if (_.isArray(res.body)) {
         for (let article of res.body) {
             if (('body' in article)) {
-                throw new Error("body present");
+                throw new Error('body present');
             }
         }
     } else {
         if (('body' in res.body)) {
-            throw new Error("body present");
+            throw new Error('body present');
         }
     }
 }
@@ -84,7 +83,7 @@ function postArticle(server, article) {
             .post('/articles')
             .send(article)
             .set('Accept', 'application/json')
-            .end(function(err, res) {
+            .end(function(err/*, res*/) {
                 if (err) {
                     logger.error(err);
                     reject(err);
@@ -114,7 +113,7 @@ function loadArticleCollection(server) {
                 .catch(err => reject(err));
         });
     });
-};
+}
 
 describe('loading express', () => {
     const createServer = require('../../server');

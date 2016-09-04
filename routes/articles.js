@@ -35,9 +35,11 @@ module.exports = function setupArticleRoutes(app) {
         app.models.article.findOne({
             id: req.params.id
         }, function(err, model) {
-            if (err) return res.json({
-                err: err
-            }, 500);
+            if (err) {
+                return res.json({
+                    err: err
+                }, 500);
+            }
             //res.json(model);
             res.json(_.omit(model, ['summary']));
         });

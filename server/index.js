@@ -2,9 +2,10 @@
 const logger = require('winston');
 const express = require('express');
 const bodyParser = require('body-parser');
-const setupDb = require('../db');
 const setupRoutes = require('../routes');
 const DB = require('../models');
+
+logger.level = process.env.LOG_LEVEL || 'silly';
 
 function createServer() {
     return new Promise((resolve, reject) => {
@@ -27,13 +28,6 @@ function createServer() {
         });
 
         db.setupWaterline(app)
-            //.then(db.setupWaterline)
-            .then((app)=>{
-              logger.debug('hhhmmmm');
-              return new Promise((resolve, reject) => {
-                resolve(app);
-              });
-            })
             .then(setupRoutes)
             .catch(err => logger.error(err))
             .then((app) => {
