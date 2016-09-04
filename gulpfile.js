@@ -3,18 +3,19 @@
 const gulp = require('gulp');
 
 // Include Our Plugins
+const documentation = require('gulp-documentation');
 const jshint = require('gulp-jshint');
 const mocha = require('gulp-mocha');
 
+// Setup some configuration variables
 let srcPaths = ['./*.js', './!(node_modules)/**/*.js'];
 let testPaths = {
     unit: [],
     integration: ['test/integration/*.js']
 };
 let watching = false;
-
-/*{reporter: 'nyan'}*/
 let mochaConfig = {
+    //reporter: 'nyan'
     reporter: 'spec'
 };
 
@@ -27,6 +28,25 @@ function handleError(err) {
         process.exit(1);
     }
 }
+
+// Generate documentation
+gulp.task('doc', function() {
+    gulp.src(srcPaths)
+        .pipe(documentation({
+            format: 'md'
+        }))
+        .pipe(gulp.dest('./docs/md'));
+    gulp.src(srcPaths)
+        .pipe(documentation({
+            format: 'html'
+        }))
+        .pipe(gulp.dest('./docs/html'));
+    gulp.src(srcPaths)
+        .pipe(documentation({
+            format: 'json'
+        }))
+        .pipe(gulp.dest('./docs/json'));
+});
 
 // Run tests
 gulp.task('test', ['lint'], () => {

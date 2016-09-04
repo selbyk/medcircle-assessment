@@ -31,12 +31,14 @@ function createServer() {
             .then(setupRoutes)
             .catch(err => logger.error(err))
             .then((app) => {
+
                 app.use((req, res, next) => {
                     if (process.env.PROFILE) {
                         logger.profile(req.tag);
                     }
                     next();
                 });
+
                 logger.info(`Running in ${process.env.NODE_ENV}`);
 
                 resolve(app);

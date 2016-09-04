@@ -48,5 +48,5 @@ gulp
 ##### Generate Documentation
 
 ```bash
-gulp gen-docs
+gulp doc
 ```
