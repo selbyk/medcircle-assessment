@@ -24,7 +24,7 @@ gulp.task('lint', () => {
 
 // Watch Files For Changes
 gulp.task('watch', () => {
-    gulp.watch('**/*.js', ['test']);
+    gulp.watch(['./*.js', './!(node_modules)/**/*.js'], ['test']);
 });
 
 // Default Task
