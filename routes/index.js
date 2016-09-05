@@ -1,5 +1,6 @@
 'use strict';
 const logger = require('winston');
+const express = require('express');
 const setupArticleRoutes = require('./articles');
 
 module.exports = function setupRoutes(app) {

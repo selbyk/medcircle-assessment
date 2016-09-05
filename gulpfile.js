@@ -8,7 +8,7 @@ const jshint = require('gulp-jshint');
 const mocha = require('gulp-mocha');
 
 // Setup some configuration variables
-let srcPaths = ['./*.js', './!(node_modules)/**/*.js'];
+let srcPaths = ['./*.js', './!(node_modules|docs)/**/*.js'];
 let testPaths = {
     unit: [],
     integration: ['test/integration/*.js']

@@ -9,9 +9,13 @@ module.exports = function setupArticleRoutes(app) {
     app.get('/articles', (req, res) => {
         app.models.article.find().exec((err, models) => {
             if (err) {
-                return res.json({
-                    err: err
-                }, 500);
+                return res.status(500).json({
+                    meta: {
+                        code: 500,
+                        status: 'Error',
+                        message: 'Server Error'
+                    }
+                });
             }
             //res.json(models);
             res.json(_.map(models, (article) => {
@@ -21,12 +25,21 @@ module.exports = function setupArticleRoutes(app) {
     });
 
     app.post('/articles', (req, res) => {
+        logger.debug('POST /articles');
+        logger.silly('Request Body: ', req.body);
         app.models.article.create(req.body, (err, model) => {
             if (err) {
-                return res.json({
-                    err: err
-                }, 500);
+                logger.error(err);
+                Object.keys(err).map(key => logger.debug(err[key]));
+                return res.status(500).json({
+                    meta: {
+                        code: 500,
+                        status: 'Error',
+                        message: 'Server Error'
+                    }
+                });
             }
+            logger.silly('Response Body: ', model);
             res.json(model);
         });
     });
@@ -36,12 +49,25 @@ module.exports = function setupArticleRoutes(app) {
             id: req.params.id
         }, function(err, model) {
             if (err) {
-                return res.json({
-                    err: err
-                }, 500);
+                return res.status(500).json({
+                    meta: {
+                        code: 500,
+                        status: 'Error',
+                        message: 'Server Error'
+                    }
+                });
             }
-            //res.json(model);
-            res.json(_.omit(model, ['summary']));
+            if (model) { // Return model if it exists
+                res.json(_.omit(model, ['summary']));
+            } else { // Return 404 if no data returned
+                res.status(404).json({
+                    meta: {
+                        code: 404,
+                        status: 'Error',
+                        message: 'Not found'
+                    }
+                });
+            }
         });
     });
 
@@ -50,12 +76,21 @@ module.exports = function setupArticleRoutes(app) {
             id: req.params.id
         }, (err) => {
             if (err) {
-                return res.json({
-                    err: err
-                }, 500);
+                logger.error(err);
+                return res.status(500).json({
+                    meta: {
+                        code: 500,
+                        status: 'Error',
+                        message: 'Server Error'
+                    }
+                });
             }
-            res.json({
-                status: 'ok'
+            res.status(200).json({
+                meta: {
+                    code: 200,
+                    status: 'Ok',
+                    message: 'Deletion successful'
+                }
             });
         });
     });
@@ -68,11 +103,19 @@ module.exports = function setupArticleRoutes(app) {
             id: req.params.id
         }, req.body, (err, model) => {
             if (err) {
-                return res.json({
-                    err: err
-                }, 500);
+                return res.status(500).json({
+                    meta: {
+                        code: 500,
+                        status: 'Error',
+                        message: 'Server Error'
+                    }
+                });
             }
-            res.json(model);
+            if(_.isArray(model) && model.length === 1){
+              res.json(model[0]);
+            } else {
+              res.json(model);
+            }
         });
     });
 };
