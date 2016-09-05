@@ -8,7 +8,13 @@ const DB = require('../models');
 
 logger.level = process.env.LOG_LEVEL || 'silly';
 
+/**
+ * App contains the server and db instances, managing their lifecycles
+ */
 class App {
+    /**
+     * Creates and configures an Express app and creates a DB instance
+     */
     constructor() {
         this.app = express();
         this.db = new DB();
@@ -21,10 +27,18 @@ class App {
         this.app.use(bodyParser.json());
     }
 
+    /**
+     * Get the HTTP server
+     * @return {HTTPServer}
+     */
     get server() {
         return this._server;
     }
 
+    /**
+     * Initializes app by setting up routes, setting up db, and loading models
+     * @return {Promise}
+     */
     init() {
         this.app.use((req, res, next) => {
             req.tag = `${(new Date()).getTime()} ${req.method} ${req.path}`;
@@ -52,6 +66,10 @@ class App {
         });
     }
 
+    /**
+     * Calls init() and creates an actively listening server
+     * @return {Promise}
+     */
     start() {
         return new Promise((resolve, reject) => {
             let self = this;
@@ -63,6 +81,10 @@ class App {
         });
     }
 
+    /**
+     * Stops the server from listening and tears down db so it can be reinitialized
+     * @return {Promise}
+     */
     stop() {
         return new Promise((resolve, reject) => {
             let self = this;
