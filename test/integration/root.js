@@ -7,29 +7,29 @@ process.env.PORT = 3434;
 process.env.NODE_ENV = 'testing';
 process.env.LOG_LEVEL = 'error';
 
+const App = require('../../app');
+
 describe('root endpoint', () => {
-    const createServer = require('../../server');
-    let server;
+    let app;
 
     beforeEach((done) => {
-        createServer().then((app) => {
-            server = app.listen(process.env.PORT, () => done());
-        });
+        app = new App();
+        app.start().then(() => done());
     });
 
     afterEach((done) => {
-        server.close(done);
+        app.stop().then(() => done());
     });
 
     it('responds 200 to / GET requests', (done) => {
         logger.info('Testing root GET response status');
-        request(server)
+        request(app.server)
             .get('/')
             .expect(200, done);
     });
 
     it('responds 404 to GET requests withour route handlers', (done) => {
-        request(server)
+        request(app.server)
             .get('/foo/bar')
             .expect(404, done);
     });
