@@ -2,10 +2,11 @@
   "name": "medcircle-assessment",
   "version": "0.0.1",
   "description": "Assessment for MedCircle",
-  "main": "app.js",
+  "main": "launcher.js",
   "scripts": {
     "start": "gulp",
-    "test": "gulp test"
+    "test": "gulp test",
+    "doc": "gulp doc"
   },
   "author": "Selby Kendrick",
   "license": "MIT",
@@ -25,7 +26,6 @@
     "express": "^4.14.0",
     "gulp-jsdoc": "^0.1.5",
     "lodash": "^4.15.0",
-    "lokijs": "^1.4.1",
     "waterline": "^0.12.2",
     "winston": "^2.2.0"
   }
