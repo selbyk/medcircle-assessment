@@ -28,7 +28,7 @@ describe('root endpoint', () => {
             .expect(200, done);
     });
 
-    it('responds 404 to GET requests withour route handlers', (done) => {
+    it('responds 404 to GET requests without route handlers', (done) => {
         request(app.server)
             .get('/foo/bar')
             .expect(404, done);

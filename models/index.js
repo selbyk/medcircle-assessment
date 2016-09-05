@@ -1,15 +1,11 @@
 'use strict';
 const logger = require('winston');
 
-// Waterline Configuration
+// Waterline configuration
 let config = {
-    // Setup Adapters
-    // Creates named adapters that have been required
     adapters: {
         'default': require('sails-memory')
     },
-    // Build Connections Config
-    // Setup connections using the named adapter configs
     connections: {
         memDb: {
             adapter: 'default'
@@ -20,7 +16,7 @@ let config = {
     }
 };
 
-// Load Models
+// Article model
 const Article = require('./article');
 
 /**
@@ -28,22 +24,32 @@ const Article = require('./article');
  * throughout tests and application life span
  */
 class DB {
+  /**
+   * Creates new DB instance
+   */
     constructor() {
         logger.info('Created DB object');
         // Instantiate a new instance of the ORM
         this.orm = new require('waterline')();
     }
 
+    /**
+     * Tears down Waterline so that it may be reinitialized
+     */
     teardown() {
         this.orm.teardown();
     }
 
+    /**
+     * adds models and connections to app for convenience
+     *
+     * @param {Express} app
+     */
     setupMiddleware(app) {
         logger.debug('Setting up DB');
         let _this = this;
 
         return new Promise((resolve, reject) => {
-            // Load the Models into the ORM
             _this.orm.loadCollection(Article);
             _this.orm.initialize(config, function(err, models) {
                 if (err) {

@@ -57,7 +57,7 @@ Example Output
 
   root endpoint
     ✓ responds 200 to / GET requests
-    ✓ responds 404 to GET requests withour route handlers
+    ✓ responds 404 to GET requests without route handlers
 
 
   7 passing (356ms)

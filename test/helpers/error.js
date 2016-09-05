@@ -2,6 +2,13 @@
 const logger = require('winston');
 const _ = require('lodash');
 
+/**
+ * Function to help handle errors consistently
+ *
+ * @param  {Error}   err
+ * @param  {Function} cb         a call back function
+ * @param  {Boolean}   throwError whether or not to throw the error
+ */
 function handleError(err, cb, throwError) {
     cb = cb ? cb : true;
     throwError = throwError ? throwError : false;

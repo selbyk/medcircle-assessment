@@ -5,8 +5,6 @@ const _ = require('lodash');
  * Collection of static functions that throw errors for endpoint testing
  */
 class ExpectHelpers {
-    constructor() {}
-
     /**
      * Throws an error if response body isn't an array
      *
@@ -67,6 +65,11 @@ class ExpectHelpers {
         }
     }
 
+    /**
+     * Throws an error if response res.body doesn't include 'body' attr
+     *
+     * @param  {ExpressResponse}  res
+     */
     static hasBodyAttr(res) {
         if (_.isArray(res.body)) {
             for (let article of res.body) {
@@ -81,6 +84,11 @@ class ExpectHelpers {
         }
     }
 
+    /**
+     * Throws an error if response res.body includes 'body' attr
+     *
+     * @param  {ExpressResponse}  res
+     */
     static doesNotHaveBodyAttr(res) {
         if (_.isArray(res.body)) {
             for (let article of res.body) {
